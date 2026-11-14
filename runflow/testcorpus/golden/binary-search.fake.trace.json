@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "status": "SUCCESS",
+  "message": null,
+  "meta": { "compileMs": 410, "runMs": 820, "totalSteps": 9, "truncated": false, "keyframeEvery": 25 },
+  "diagnostics": [],
+  "graph": {
+    "methods": ["main", "binarySearch"],
+    "nodes": [
+      { "id": "bs_start", "method": "binarySearch", "type": "START", "label": "enter binarySearch(a, target)", "lineStart": 2, "lineEnd": 2 },
+      { "id": "bs_init", "method": "binarySearch", "type": "ACTION", "label": "low = 0; high = a.length - 1", "lineStart": 3, "lineEnd": 3 },
+      { "id": "bs_while", "method": "binarySearch", "type": "DECISION", "label": "low <= high?", "lineStart": 4, "lineEnd": 4 },
+      { "id": "bs_mid", "method": "binarySearch", "type": "ACTION", "label": "mid = (low + high) / 2", "lineStart": 5, "lineEnd": 5 },
+      { "id": "bs_if1", "method": "binarySearch", "type": "DECISION", "label": "a[mid] == target?", "lineStart": 6, "lineEnd": 6 },
+      { "id": "bs_ret_found", "method": "binarySearch", "type": "RETURN", "label": "return mid", "lineStart": 6, "lineEnd": 6 },
+      { "id": "bs_if2", "method": "binarySearch", "type": "DECISION", "label": "a[mid] < target?", "lineStart": 7, "lineEnd": 7 },
+      { "id": "bs_low", "method": "binarySearch", "type": "ACTION", "label": "low = mid + 1", "lineStart": 7, "lineEnd": 7 },
+      { "id": "bs_high", "method": "binarySearch", "type": "ACTION", "label": "high = mid - 1", "lineStart": 8, "lineEnd": 8 },
+      { "id": "bs_ret_nf", "method": "binarySearch", "type": "RETURN", "label": "return -1", "lineStart": 10, "lineEnd": 10 },
+      { "id": "m_start", "method": "main", "type": "START", "label": "enter main", "lineStart": 12, "lineEnd": 12 },
+      { "id": "m_arr", "method": "main", "type": "ACTION", "label": "int[] a = {2,5,8,12,16,23,38}", "lineStart": 13, "lineEnd": 13 },
+      { "id": "m_call", "method": "main", "type": "CALL", "label": "println(binarySearch(a, 23))", "lineStart": 14, "lineEnd": 14 },
+      { "id": "m_end", "method": "main", "type": "END", "label": "exit main", "lineStart": 15, "lineEnd": 15 }
+    ],
+    "edges": [
+      { "id": "e1", "from": "m_start", "to": "m_arr", "label": null },
+      { "id": "e2", "from": "m_arr", "to": "m_call", "label": null },
+      { "id": "e3", "from": "m_call", "to": "bs_start", "label": null },
+      { "id": "e4", "from": "bs_start", "to": "bs_init", "label": null },
+      { "id": "e5", "from": "bs_init", "to": "bs_while", "label": null },
+      { "id": "e6", "from": "bs_while", "to": "bs_mid", "label": "Yes" },
+      { "id": "e7", "from": "bs_while", "to": "bs_ret_nf", "label": "No" },
+      { "id": "e8", "from": "bs_mid", "to": "bs_if1", "label": null },
+      { "id": "e9", "from": "bs_if1", "to": "bs_ret_found", "label": "Yes" },
+      { "id": "e10", "from": "bs_if1", "to": "bs_if2", "label": "No" },
+      { "id": "e11", "from": "bs_if2", "to": "bs_low", "label": "Yes" },
+      { "id": "e12", "from": "bs_if2", "to": "bs_high", "label": "No" },
+      { "id": "e13", "from": "bs_low", "to": "bs_while", "label": "Loop Back" },
+      { "id": "e14", "from": "bs_high", "to": "bs_while", "label": "Loop Back" },
+      { "id": "e15", "from": "bs_ret_found", "to": "m_end", "label": null },
+      { "id": "e16", "from": "bs_ret_nf", "to": "m_end", "label": null }
+    ]
+  },
+  "pointerHints": [
+    { "method": "binarySearch", "array": "a", "indexVars": ["low", "mid", "high"] }
+  ],
+  "steps": [
+    {
+      "i": 0, "kind": "LINE", "line": 13, "node": "m_arr", "viaEdge": "e1", "ret": null,
+      "stack": [ { "frame": "f1", "method": "main", "line": 13, "locals": {} } ],
+      "heap": { "h1": { "kind": "ARRAY", "cls": "int[]", "len": 7,
+        "el": [ {"t":"int","v":2},{"t":"int","v":5},{"t":"int","v":8},{"t":"int","v":12},
+                {"t":"int","v":16},{"t":"int","v":23},{"t":"int","v":38} ] } },
+      "heapDiff": null, "stdoutAppend": ""
+    },
+    {
+      "i": 1, "kind": "CALL", "line": 14, "node": "m_call", "viaEdge": "e3", "ret": null,
+      "stack": [ { "frame": "f1", "method": "main", "line": 14, "locals": { "a": {"t":"ref","id":"h1"} } } ],
+      "heap": null, "heapDiff": null, "stdoutAppend": ""
+    },
+    {
+      "i": 2, "kind": "LINE", "line": 3, "node": "bs_init", "viaEdge": "e4", "ret": null,
+      "stack": [ { "frame": "f1", "method": "main", "line": 14, "locals": { "a": {"t":"ref","id":"h1"} } },
+                 { "frame": "f2", "method": "binarySearch", "line": 3,
+                   "locals": { "target": {"t":"int","v":23}, "a": {"t":"ref","id":"h1"},
+                               "low": {"t":"int","v":0}, "high": {"t":"int","v":6} } } ],
+      "heap": null, "heapDiff": null, "stdoutAppend": ""
+    },
+    {
+      "i": 3, "kind": "LINE", "line": 5, "node": "bs_mid", "viaEdge": "e6", "ret": null,
+      "stack": [ { "frame": "f1", "method": "main", "line": 14, "locals": { "a": {"t":"ref","id":"h1"} } },
+                 { "frame": "f2", "method": "binarySearch", "line": 5,
+                   "locals": { "target": {"t":"int","v":23}, "a": {"t":"ref","id":"h1"},
+                               "low": {"t":"int","v":0}, "high": {"t":"int","v":6}, "mid": {"t":"int","v":3} } } ],
+      "heap": null, "heapDiff": null, "stdoutAppend": ""
+    },
+    {
+      "i": 4, "kind": "LINE", "line": 7, "node": "bs_low", "viaEdge": "e11", "ret": null,
+      "stack": [ { "frame": "f1", "method": "main", "line": 14, "locals": { "a": {"t":"ref","id":"h1"} } },
+                 { "frame": "f2", "method": "binarySearch", "line": 7,
+                   "locals": { "target": {"t":"int","v":23}, "a": {"t":"ref","id":"h1"},
+                               "low": {"t":"int","v":4}, "high": {"t":"int","v":6}, "mid": {"t":"int","v":3} } } ],
+      "heap": null, "heapDiff": null, "stdoutAppend": ""
+    },
+    {
+      "i": 5, "kind": "LINE", "line": 5, "node": "bs_mid", "viaEdge": "e13", "ret": null,
+      "stack": [ { "frame": "f1", "method": "main", "line": 14, "locals": { "a": {"t":"ref","id":"h1"} } },
+                 { "frame": "f2", "method": "binarySearch", "line": 5,
+                   "locals": { "target": {"t":"int","v":23}, "a": {"t":"ref","id":"h1"},
+                               "low": {"t":"int","v":4}, "high": {"t":"int","v":6}, "mid": {"t":"int","v":5} } } ],
+      "heap": null, "heapDiff": null, "stdoutAppend": ""
+    },
+    {
+      "i": 6, "kind": "LINE", "line": 6, "node": "bs_if1", "viaEdge": "e8", "ret": null,
+      "stack": [ { "frame": "f1", "method": "main", "line": 14, "locals": { "a": {"t":"ref","id":"h1"} } },
+                 { "frame": "f2", "method": "binarySearch", "line": 6,
+                   "locals": { "target": {"t":"int","v":23}, "a": {"t":"ref","id":"h1"},
+                               "low": {"t":"int","v":4}, "high": {"t":"int","v":6}, "mid": {"t":"int","v":5} } } ],
+      "heap": null, "heapDiff": null, "stdoutAppend": ""
+    },
+    {
+      "i": 7, "kind": "RETURN", "line": 6, "node": "bs_ret_found", "viaEdge": "e9", "ret": {"t":"int","v":5},
+      "stack": [ { "frame": "f1", "method": "main", "line": 14, "locals": { "a": {"t":"ref","id":"h1"} } } ],
+      "heap": null, "heapDiff": null, "stdoutAppend": ""
+    },
+    {
+      "i": 8, "kind": "LINE", "line": 14, "node": "m_end", "viaEdge": "e15", "ret": null,
+      "stack": [],
+      "heap": null, "heapDiff": null, "stdoutAppend": "5\n"
+    }
+  ]
+}

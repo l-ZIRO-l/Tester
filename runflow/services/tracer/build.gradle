@@ -1,0 +1,14 @@
+// Java build tool decision (Phase 0): Gradle (wrapper to be added on dev machine: `gradle wrapper --gradle-version 8.10`).
+plugins {
+    id 'application'
+}
+java {
+    toolchain { languageVersion = JavaLanguageVersion.of(17) }
+}
+repositories { mavenCentral() }
+dependencies {
+    implementation 'com.github.javaparser:javaparser-symbol-solver-core:3.26.1' // parser + CFG (Apache-2.0/LGPL dual)
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
+}
+application { mainClass = 'runflow.tracer.Main' }
+test { useJUnitPlatform() }

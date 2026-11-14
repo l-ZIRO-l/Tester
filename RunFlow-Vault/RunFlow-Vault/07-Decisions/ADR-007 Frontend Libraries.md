@@ -10,5 +10,7 @@ status: accepted
 
 **Open question OQ-1 — API language:** Node/Fastify (one language with the UI, 2 languages total with Java tracer) vs Java (e.g., Javalin; one backend language, but a second ecosystem beside TS). **Default: Node/Fastify.** Decide in [[Phase 0 - Setup]]; record the outcome here.
 
+**OQ-1 OUTCOME (2026-11-14, Phase 0):** ✅ Decided — **Node 20 + Fastify**. Rationale: shares the TS toolchain/lint/CI pipeline with the web app, trivial container-spawning ergonomics (`child_process`), and the tracer's Java dependency does not force a JVM on the API anyway. Recorded also in `runflow/services/api/README.md`.
+
 **Licensing note:** check licenses of all dependencies (e.g., ELKjs is EPL-2.0 if adopted; JavaParser LGPL/Apache dual) before launch ([[Public Launch Gate]]).
 Related: [[Tech Stack]], [[Frontend Architecture]].

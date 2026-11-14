@@ -1,0 +1,5 @@
+{
+  "name": "runflow",
+  "private": true,
+  "workspaces": ["apps/*", "services/*"]
+}
